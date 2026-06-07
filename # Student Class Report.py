@@ -102,7 +102,7 @@ def display_class_report(students):
     print("=================================")
 
 def main():
-    students = get_all_students()      # ✅ first get students
-    display_class_report(students)     # ✅ then display
+    students = get_all_students()      
+    display_class_report(students)    
 
 main()
