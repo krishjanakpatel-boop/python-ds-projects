@@ -1,0 +1,110 @@
+import json
+def load_data(filename):
+    with open(filename,"r")as f:
+        data=json.load(f)
+    return data  
+data=load_data("insta.json")
+print(data)
+def dispay_all_users(data):
+    print("\n====INSTAGRAM ANALYZER===")
+    print("===ALL USERS===\n")
+    for user in data["users"]:
+        print(f"@{user["username"]} | followers:{user["followers"]} | following: {user["following"]} | posts:{user["posts"]}")
+        print(f"bio:{user["bio"]}")
+        print("==============")
+dispay_all_users(data)
+
+
+def most_followers(data):
+    top=data["users"][0]
+    for user in data["users"]:
+        if user["followers"]>top["followers"]:
+            top=user
+    return top
+  
+high=most_followers(data)
+print("\n--- Top Influencer ---")
+print(f"@{high["username"]} with {high["followers"]} followers")
+
+def most_posts(data):
+    top=data["users"][0]
+    for user in data["users"]:
+        if user["posts"]>top["posts"]:
+            top=user
+    return top
+max=most_posts(data)
+print("\n--- creators whith highest nunmer of posts---")
+print(f"@{max["username"]} with highest {max["posts"]} posts")
+def engagement_rate(user):
+    rate=(user["followers"]/user["following"])*100
+    return round(rate,2)
+def display_engagement(data):
+    print("---Engagement Rates---")
+    for user in data["users"]:
+        rate=engagement_rate(user)
+        print(f"@{user['username']} → {rate}%")
+display_engagement(data)
+def top_engagement(data):
+    engagers=[]
+    for user in data["users"]:
+        rate=engagement_rate(user)
+        engagers.append({
+            "username":user["username"],
+            "rate":rate
+        })
+    top3=[]
+    for i in range(3):
+        highest=engagers[0]
+        for e in engagers:
+            if e["rate"]>highest["rate"]:
+                highest=e
+        top3.append(highest)
+        engagers.remove(highest)
+    return top3
+
+print("\n ---Top 3 Engagers---")
+top3=top_engagement(data)
+for i,user in enumerate(top3):
+     print(f"{i+1}. @{user['username']} → {user['rate']}%")
+
+def user_categery(followers):
+    if followers>=1000000:
+        return"Mega  Influencer"
+    elif followers>=100000:
+        return"Macro Influencer"
+    elif followers>=10000:
+        return"Micro Influencer"
+    else:
+        return"Nano Influencer"
+def display_catergery(data):
+     print("\n--- User Categories ---")
+     for user in data["users"]:
+         category=user_categery(user["followers"])
+         print(f"@{user["username"]} → {category}")
+display_catergery(data)
+
+def lowest_follower(data):
+    lowest=data["users"][0]
+    for user in data["users"]:
+        if user["followers"]<lowest["followers"]:
+            lowest=user
+    return lowest
+
+def stats_summary(data):
+    users=data["users"]
+    total_users=len(users)
+    total_followers=0
+    for user in data["users"]:
+        total_followers+=user["followers"]
+    avg_followers=round(total_followers/total_users,2)
+    top=most_followers(data)
+    lowest=lowest_follower(data)
+       
+    print("\n--- Stats Summary ---")
+    print(f"Total Users: {total_users}")
+    print(f"Total Followers: {total_followers}")
+    print(f"Average Followers: {avg_followers}")
+    print(f"Highest: @{top['username']} ({top['followers']})")
+    print(f"Lowest: @{lowest['username']} ({lowest['followers']})")
+
+stats_summary(data)
