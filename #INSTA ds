@@ -108,3 +108,71 @@ def stats_summary(data):
     print(f"Lowest: @{lowest['username']} ({lowest['followers']})")
 
 stats_summary(data)
+
+OUTPUT:-
+
+====INSTAGRAM ANALYZER===
+===ALL USERS===
+
+@krish_codes | followers:1200 | following: 350 | posts:45
+bio:Data Science Student | Python Lover | Learning Everyday
+==============
+@priya_ds | followers:8500 | following: 420 | posts:120
+bio:ML Engineer | Coffee Addict | Building cool stuff
+==============
+@rahul.tech | followers:15000 | following: 800 | posts:230
+bio:Full Stack Dev | Open Source | IIT Bombay
+==============
+@amit_ai | followers:32000 | following: 210 | posts:89
+bio:AI Researcher | Deep Learning | PhD Student
+==============
+@sara_creates | followers:125000 | following: 1500 | posts:540
+bio:Content Creator | Travel | Photography | Lifestyle
+==============
+@dev_nikhil | followers:3200 | following: 280 | posts:67
+bio:Backend Developer | Python | Django | REST APIs
+==============
+@data_divya | followers:6700 | following: 390 | posts:95
+bio:Data Analyst | SQL | Tableau | Making data beautiful
+==============
+
+
+--- Top Influencer ---
+@sara_creates with 125000 followers
+
+
+--- creators whith highest nunmer of posts---
+@sara_creates with highest 540 posts
+
+---Engagement Rates---
+@krish_codes → 342.86%
+@priya_ds → 2023.81%
+@rahul.tech → 1875.0%
+@amit_ai → 15238.1%
+@sara_creates → 8333.33%
+@dev_nikhil → 1142.86%
+@data_divya → 1717.95%
+
+
+ ---Top 3 Engagers---
+1. @amit_ai → 15238.1%
+2. @sara_creates → 8333.33%
+3. @priya_ds → 2023.81%
+
+
+--- User Categories ---
+@krish_codes → Nano Influencer
+@priya_ds → Nano Influencer
+@rahul.tech → Micro Influencer
+@amit_ai → Micro Influencer
+@sara_creates → Macro Influencer
+@dev_nikhil → Nano Influencer
+@data_divya → Nano Influencer
+
+
+--- Stats Summary ---
+Total Users: 7
+Total Followers: 191600
+Average Followers: 27371.43
+Highest: @sara_creates (125000)
+Lowest: @krish_codes (1200)
